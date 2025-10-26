@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -28,7 +28,7 @@ jobs:
           python -m PyInstaller --onefile --windowed --name "南银理财合同匹配工具" contract_matcher.py
 
       - name: Upload Windows EXE
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: 南银理财合同匹配工具
           path: dist/南银理财合同匹配工具.exe
