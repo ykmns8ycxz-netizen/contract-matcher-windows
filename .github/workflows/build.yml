@@ -25,11 +25,11 @@ jobs:
 
       - name: Build Windows EXE
         run: |
-          python -m PyInstaller --onefile --windowed --name "南银理财合同匹配工具" contract_matcher.py
+          python -m PyInstaller --onefile --windowed --name "ContractMatcher" contract_matcher.py
 
       - name: Upload Windows EXE
         uses: actions/upload-artifact@v4
         with:
-          name: 南银理财合同匹配工具
-          path: dist/南银理财合同匹配工具.exe
+          name: ContractMatcher
+          path: dist/ContractMatcher.exe
           retention-days: 30
