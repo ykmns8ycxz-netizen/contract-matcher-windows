@@ -1,0 +1,35 @@
+name: Build Windows Executable
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller pandas openpyxl
+
+      - name: Build Windows EXE
+        run: |
+          python -m PyInstaller --onefile --windowed --name "南银理财合同匹配工具" contract_matcher.py
+
+      - name: Upload Windows EXE
+        uses: actions/upload-artifact@v3
+        with:
+          name: 南银理财合同匹配工具
+          path: dist/南银理财合同匹配工具.exe
+          retention-days: 30
